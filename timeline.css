@@ -1,0 +1,240 @@
+/* styles.css */
+body, html {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding:  50px 15% 50px 15%;
+    background: #f4f4f4;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+margin-top: 60px;
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #ddd;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: blue;
+    color: white;
+    z-index: 100; /* Establece un z-index más bajo que el de los modales */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+
+} 
+  .container {
+    padding: 15px 0px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    left: 50%;
+  }
+
+img {
+  width:40%;
+  
+}
+
+.carousel-item video {
+    width: 30%;
+    height: auto;
+}
+
+p{
+  padding:5px;
+
+}
+  .content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra ligera para dar profundidad */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación suave */
+  }
+  
+  /* Nuevos estilos para interacción */
+  .content:hover {
+    transform: translateY(-3px); /* Mueve ligeramente el contenido hacia arriba */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra más pronunciada al pasar el ratón */
+  }
+  
+  .content::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #ddd;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .right .content::after {
+    left: -17px;
+  }
+  
+  /*MODAL  */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: white;
+
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85%; /* Establece la altura deseada */
+    width: 80%; /* Establece el ancho deseado */
+    max-width: 800px; /* Opcional: Establece un ancho máximo */
+    max-height: 600px; /* Opcional: Establece una altura máxima */
+    margin: auto; /* Centra el modal en la pantalla */
+   
+    background-colorwh: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Agrega una sombra al modal */
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/*  */
+.content {
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(500px); /* Comienza fuera de vista hacia abajo */
+    transition: all 1s cubic-bezier(.99, -0.7, .2, 1.9); /* Transición suave para ambos */
+}
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5); /* Ajustamos la posición inicial */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.1); /* Ajustamos la posición intermedia */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bounceOut {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1); /* Ajustamos la posición intermedia */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5); /* Ajustamos la posición final */
+    }
+}
+
+._show {
+    opacity: 1;
+    animation: bounceIn 0.5s ease both;
+}
+
+._hide {
+    opacity: 0;
+    animation: bounceOut 0.5s ease both;
+}
+
+/*CARRUSEL*/
+
+  .carousel {
+    position: relative;
+    max-width: 80%; /* Ajusta el ancho del carrusel según sea necesario */
+    overflow: hidden;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 100%;
+    background-color: white;
+  }
+  
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    z-index: 9999;
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  
+  
